@@ -17,7 +17,7 @@ module StCodebreaker
       case gets.chomp
       when '1' then play
       when '2' then show_stats
-      when '3' then print 'exit'
+      when '3' then exit
       else print 'Incorrect input'
       end
     end
@@ -48,7 +48,7 @@ module StCodebreaker
     end
 
     def read_stats
-      File.read('stats.txt')
+      File.read('../../stats.txt')
     end
 
     def play_again
