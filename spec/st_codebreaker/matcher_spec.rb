@@ -15,9 +15,6 @@ module StCodebreaker
       it 'saves guess code' do
         expect(subject.instance_variable_get(:@guess)).to eq [2, 1, 2, 1]
       end
-
-      # it { expect(subject.match).to be_zero }
-      # it { expect(subject.exact_match).to be_zero }
     end
 
     describe '#exact_match' do
@@ -81,7 +78,6 @@ module StCodebreaker
 
       context 'with 1 exact match duplicated in guess' do
         it 'returns 0' do
-          # pending("refactor number_match_count")
           matcher = Matcher.new('1234','1155')
           expect(matcher.number_match).to eq 0
         end
