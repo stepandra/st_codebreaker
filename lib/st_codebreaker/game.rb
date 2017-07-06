@@ -4,11 +4,12 @@ module StCodebreaker
   class Game
     attr_reader :attempts
     ATTEMPTS = 10
+    CODE_SIZE = 4
+    DIGITS = 1..6
 
     def initialize
-      # @hint = '****'
       @no_hint = false
-      @secret = (1..4).map { rand(1..6) }.join
+      @secret = generate_secret
       @attempts = ATTEMPTS
     end
 
@@ -16,8 +17,7 @@ module StCodebreaker
       return 'Input error' if guess.match(/^[1-6]{4}$/).nil?
       @attempts -= 1
       matcher = Matcher.new(secret, guess)
-      result = '+' * matcher.exact_match + '-' * matcher.number_match
-      result
+      '+' * matcher.exact_match + '-' * matcher.number_match
     end
 
     def save(name)
@@ -36,6 +36,10 @@ module StCodebreaker
     end
 
     private
+
+    def generate_secret
+      Array.new(CODE_SIZE) { rand(DIGITS) }.join
+    end
 
     def no_hint?
       @no_hint
