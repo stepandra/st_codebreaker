@@ -2,7 +2,7 @@ require_relative 'matcher'
 
 module StCodebreaker
   class Game
-    attr_reader :attempts, :no_hint
+    attr_reader :attempts, :no_hint, :secret
     ATTEMPTS = 10
     CODE_SIZE = 4
     DIGITS = 1..6
